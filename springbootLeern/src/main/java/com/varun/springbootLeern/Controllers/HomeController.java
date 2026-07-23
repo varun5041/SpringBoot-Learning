@@ -1,5 +1,7 @@
 package com.varun.springbootLeern.Controllers;
 
+import com.varun.springbootLeern.Config.VarunConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +13,8 @@ import java.util.List;
 public class HomeController {
     @Value("${mykeys.profilepath}")
     private String ProfilePath;
+    @Autowired
+    private VarunConfig varunconfig;
 
     @RequestMapping("/getNumbers")
     public List<Integer> getNumbers(){
@@ -21,6 +25,13 @@ public class HomeController {
     public String getProfilePath(){
         return this.ProfilePath;
     }
+
+    @RequestMapping("/getAdminConfig")
+    public VarunConfig getvarunConfig(){
+        return varunconfig;
+    }
+
+
 
 
 }
